@@ -56,3 +56,4 @@
 (package! org-glossary
   :recipe (:host github :repo "tecosaur/org-glossary"))
 (package! org-roam)
+(package! emacsql-sqlite3)

@@ -61,7 +61,6 @@
   (setq org-directory "~/org/")
   (setq org-log-done 'time)
   (setq org-log-done 'note)
-  (setq org-roam-directory "~/roam")
   (require 'org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )

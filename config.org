@@ -11,11 +11,17 @@
 - [[#company-completion][Company Completion]]
 
 * Set Doom Config
+:PROPERTIES:
+:ID:       bed319b3-5c82-423d-8be4-10e8609904aa
+:END:
 #+BEGIN_SRC emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+END_SRC
 
 * Theme and appearance
+:PROPERTIES:
+:ID:       b8c55a22-66f6-4af2-bee2-2e90ef1373cb
+:END:
 Set the Doom Theme and disable default UI
 
 #+BEGIN_SRC emacs-lisp
@@ -33,6 +39,9 @@ Set the Font
 #+END_SRC
 
 * Basic Control Mappings
+:PROPERTIES:
+:ID:       57af6ed9-4305-4046-b540-4472f57f0c8d
+:END:
 Set subword mode for navigation
 
 #+BEGIN_SRC emacs-lisp
@@ -72,6 +81,9 @@ Custom Keybindings
 #+END_SRC
 
 * JavaScript Development
+:PROPERTIES:
+:ID:       b6329fc9-5143-433d-bff0-2f551417fc1b
+:END:
 Disable LSP formatting
 
 #+BEGIN_SRC emacs-lisp
@@ -109,6 +121,9 @@ Setup eslint
 #+END_SRC
 
 * Projectile
+:PROPERTIES:
+:ID:       4395027e-4df8-4c13-9de6-446fa0c72f7e
+:END:
 Fix indexing
 
 #+BEGIN_SRC emacs-lisp
@@ -117,6 +132,9 @@ Fix indexing
 #+END_SRC
 
 * Org mode
+:PROPERTIES:
+:ID:       b30a5467-5724-4822-b1a9-f5c87b1f5490
+:END:
 Set org-mode defaults
 
 #+BEGIN_SRC emacs-lisp
@@ -124,7 +142,6 @@ Set org-mode defaults
   (setq org-directory "~/org/")
   (setq org-log-done 'time)
   (setq org-log-done 'note)
-  (setq org-roam-directory "~/roam")
   (require 'org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
@@ -137,7 +154,21 @@ Set up org-glossary
   :hook (org-mode . org-glossary-mode))
 #+END_SRC
 
+Setup org-roam
+
+#+BEGIN_SRC emacs-lisp
+(use-package! org-roam
+              :ensure t
+              :custom
+              (org-roam-directory (file-truename "~/org/roam/"))
+              :config
+              (org-roam-db-autosync-mode))
+#+END_SRC
+
 * Company Completion
+:PROPERTIES:
+:ID: a15884e7-d155-4794-bbb4-091467e774ec
+:END:
 Set Tooltip behavior
 
 #+BEGIN_SRC emacs-lisp
