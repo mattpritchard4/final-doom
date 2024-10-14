@@ -61,13 +61,41 @@
   (setq org-directory "~/org/")
   (setq org-log-done 'time)
   (setq org-log-done 'note)
-  (require 'org-bullets)
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
 
 (use-package! org-glossary
   :hook (org-mode . org-glossary-mode))
 
+(use-package! org-roam
+              :ensure t
+              :custom
+              (org-roam-directory (file-truename "~/org/roam/"))
+              :config
+              (org-roam-db-autosync-mode))
+
+(setq org-latex-toc-command "\\tableofcontents \\clearpage")
+
+(defun yas/org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (make-variable-buffer-local 'yas/trigger-key)
+            (setq yas/trigger-key [tab])
+            (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+            (define-key yas/keymap [tab] 'yas/next-field)))
+
 (after! company
   (setq company-tooltip-align-annotations t)
 )
+
+(after! rescript-mode
+  (setq lsp-rescript-server-command
+        '("rescript-language-server" "--stdio"))
+  ;; Tell `lsp-mode` about the `rescript-vscode` LSP server
+  (require 'lsp-rescript)
+  ;; Enable `lsp-mode` in rescript-mode buffers
+  (add-hook 'rescript-mode-hook 'lsp-deferred)
+  ;; Enable display of type information in rescript-mode buffers
+  (require 'lsp-ui)
+  (add-hook 'rescript-mode-hook 'lsp-ui-doc-mode))

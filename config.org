@@ -9,6 +9,7 @@
 - [[#projectile][Projectile]]
 - [[#org-mode][Org mode]]
 - [[#company-completion][Company Completion]]
+- [[#rescript][Rescript]]
 
 * Set Doom Config
 :PROPERTIES:
@@ -142,8 +143,6 @@ Set org-mode defaults
   (setq org-directory "~/org/")
   (setq org-log-done 'time)
   (setq org-log-done 'note)
-  (require 'org-bullets)
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
 #+END_SRC
 
@@ -165,6 +164,25 @@ Setup org-roam
               (org-roam-db-autosync-mode))
 #+END_SRC
 
+Force page break from org table of contents for export
+
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-toc-command "\\tableofcontents \\clearpage")
+#+END_SRC
+
+Fix yas snippet
+#+BEGIN_SRC emacs-lisp
+(defun yas/org-very-safe-expand ()
+  (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (make-variable-buffer-local 'yas/trigger-key)
+            (setq yas/trigger-key [tab])
+            (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+            (define-key yas/keymap [tab] 'yas/next-field)))
+#+END_SRC
+
 * Company Completion
 :PROPERTIES:
 :ID: a15884e7-d155-4794-bbb4-091467e774ec
@@ -175,4 +193,19 @@ Set Tooltip behavior
 (after! company
   (setq company-tooltip-align-annotations t)
 )
+#+END_SRC
+
+* Rescript
+
+#+BEGIN_SRC emacs-lisp
+(after! rescript-mode
+  (setq lsp-rescript-server-command
+        '("rescript-language-server" "--stdio"))
+  ;; Tell `lsp-mode` about the `rescript-vscode` LSP server
+  (require 'lsp-rescript)
+  ;; Enable `lsp-mode` in rescript-mode buffers
+  (add-hook 'rescript-mode-hook 'lsp-deferred)
+  ;; Enable display of type information in rescript-mode buffers
+  (require 'lsp-ui)
+  (add-hook 'rescript-mode-hook 'lsp-ui-doc-mode))
 #+END_SRC

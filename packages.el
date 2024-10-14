@@ -49,7 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
-(package! org-bullets)
 (package! ox-pandoc)
 (package! swiper)
 (package! toc-org)
@@ -57,3 +56,6 @@
   :recipe (:host github :repo "tecosaur/org-glossary"))
 (package! org-roam)
 (package! emacsql-sqlite3)
+(package! rescript-mode)
+(package! lsp-rescript)
+(package! lorem-ipsum)
