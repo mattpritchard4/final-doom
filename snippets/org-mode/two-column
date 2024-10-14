@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: two column
+# key: tw
+# --
+
+#+LATEX: \begin{multicols}{2}
+$0
+#+LATEX: \end{multicols}

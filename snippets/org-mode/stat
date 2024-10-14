@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: stat
+# key: stat
+# --
+*Class*
+*Stat Line*: AC $0, Spd $1' / $2', HP $3, ATK $4 ($5), Dmg $6, Init $7, Surprise $8, ML $9, AL $10
+*Attributes*: STR $11, INT $12, WIL $13, DEX $14, CON $15, CHA $16
+*Saving Throws*: Paralysis $17, Death $18, Blast $19, Implements $20, Spells $21
+*Class Powers*: $22
+*Proficiencies*: $23
+*Languages*: Common, Campaign Dependent +$24
+*Equipment*: $25
