@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: twocol
+# key: twocol
+# --
+#+LATEX: \begin{multicols}{2}
+$1
+#+LATEX: \end{multicols}

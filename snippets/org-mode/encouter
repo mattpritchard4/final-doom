@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: encouter
+# key: encouter
+# --
+#+LATEX: \renewcommand{\arraystretch}{1.8}
+#+ATTR_LATEX: :align cp{4.25in}
+| \rowcolor{black} \textcolor{white}{1d6} | \textcolor{white}{Encounter}                                 |
+|-----------------------------------------+--------------------------------------------------------------|

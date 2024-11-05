@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mon
+# key: mon
+# --
+$1: Speed $2' / $3', AC $4, HD $5, hp $6 \#AT $7 ($8), D $9 ($10), Save $11, ML $12, AL $13, XP $14

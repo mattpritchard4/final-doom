@@ -85,6 +85,13 @@
             (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
             (define-key yas/keymap [tab] 'yas/next-field)))
 
+;; set up tikz as one of the default packages for LaTeX
+(setq org-latex-packages-alist
+      (quote (("" "color" t)
+          ("" "minted" t)
+          ("" "parskip" t)
+          ("" "tikz" t))))
+
 (after! company
   (setq company-tooltip-align-annotations t)
 )

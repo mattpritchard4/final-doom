@@ -1,0 +1,9 @@
+# key: sdhead
+# name: sdhead
+# --
+#+LATEX: \begin{tcolorbox}
+#+LATEX: \color{white}
+#+BEGIN_CENTER
+$1
+#+END_CENTER
+#+LATEX: \end{tcolorbox}
